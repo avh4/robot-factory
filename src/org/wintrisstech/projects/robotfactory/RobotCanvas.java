@@ -4,22 +4,30 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import javax.swing.JComponent;
 
 /**
  * This class is a JComponent that draws a lot of Robots.
  */
-class RobotCanvas extends JComponent {
+class RobotCanvas extends JComponent implements MouseListener {
 
     private static final int GRID_SIZE = 200;
 
     private Robot[] r = new Robot[12];
 
     public RobotCanvas() {
+        createNewRobots();
+        this.addMouseListener(this);
+    }
+
+    private void createNewRobots() {
         for (int i = 0; i < r.length; i++) {
             r[i] = new Robot();
         }
+        repaint();
     }
 
     @Override
@@ -43,6 +51,23 @@ class RobotCanvas extends JComponent {
             g2.setTransform(AffineTransform.getTranslateInstance(3*GRID_SIZE, row*GRID_SIZE));
             r[3+row*4].draw(g2);
         }
+    }
+
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    public void mousePressed(MouseEvent e) {
+        createNewRobots();
+    }
+
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public void mouseExited(MouseEvent e) {
     }
 
 }
