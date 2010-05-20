@@ -7,18 +7,20 @@ import java.awt.Graphics2D;
 class Robot {
 
     int BODY_WIDTH = randomInt(20, 150);
-    int ARM_LENGTH = randomInt(10, 100);
+    int BODY_HEIGHT = randomInt(20, 150);
+    int ARM_LENGTH = randomInt(10, BODY_HEIGHT + 30);
+    Color COLOR = randomColor();
 
     void draw(Graphics2D g) {
-        g.setColor(Color.BLACK);
+        g.setColor(COLOR);
         // Body
-        g.fillRoundRect(21, 51, BODY_WIDTH - 2, 78, 3, 3);
+        g.fillRoundRect(21, 51, BODY_WIDTH - 2, BODY_HEIGHT - 2, 3, 3);
         // Arms
-        g.fillRoundRect(1, 51, 18, ARM_LENGTH - 2, 3, 3);
-        g.fillRoundRect(BODY_WIDTH + 21, 51, 18, ARM_LENGTH - 2, 3, 3);
+        g.fillRoundRect(1, 51, 18, ARM_LENGTH - 2, 5, 5);
+        g.fillRoundRect(BODY_WIDTH + 21, 51, 18, ARM_LENGTH - 2, 5, 5);
         // Legs
-        g.fillRoundRect(BODY_WIDTH/2 + 20 - 20 + 1, 131, 8, 28, 3, 3);
-        g.fillRoundRect(BODY_WIDTH/2 + 20 + 10 + 1, 131, 8, 28, 3, 3);
+        g.fillRoundRect(BODY_WIDTH/2 + 20 - 20 + 1, BODY_HEIGHT + 51, 8, 28, 3, 3);
+        g.fillRoundRect(BODY_WIDTH/2 + 20 + 10 + 1, BODY_HEIGHT + 51, 8, 28, 3, 3);
         // Head
         g.fillArc(21, 11, BODY_WIDTH - 2, 76, 0, 180);
         // Ears
@@ -31,11 +33,15 @@ class Robot {
         g.setColor(Color.WHITE);
         g.fillOval(22, 22, 16, 16);
         g.fillOval(BODY_WIDTH + 2, 22, 16, 16);
-        g.setColor(Color.BLACK);
+        g.setColor(COLOR);
     }
 
     private int randomInt(int low, int high) {
         return (int) (low + (Math.random() * (high - low)));
+    }
+
+    private Color randomColor() {
+        return new Color(randomInt(0, 255), randomInt(0, 255), randomInt(0, 255));
     }
 
 }
