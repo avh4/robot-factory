@@ -1,21 +1,18 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package org.wintrisstech.projects.robotfactory;
 
-/**
- *
- * @author avh4
- */
+import javax.swing.JFrame;
+
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        JFrame window = new JFrame("Robot Factory");
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.add(new RobotCanvas());
+        window.pack();
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
     }
 
 }
